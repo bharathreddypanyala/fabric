@@ -1,0 +1,51 @@
+---
+test:
+  name: simple
+  description: (Fabric) Testing
+  workers:
+    type: local
+    number: 1
+  rounds:
+  - label: open
+    description: Test description for the opening of an account through the deployed chaincode (Fabric)
+    txNumber: 10000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    arguments:
+      money: 1000000000
+    callback: benchmarks/scenario/simple/open.js
+
+  
+    
+  - label: query
+    description: Test description for the query performance of the deployed chaincode (Fabric)
+    txNumber: 10000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    callback: benchmarks/scenario/simple/query.js
+
+  
+
+  - label: transfer
+    description: Test description for transfering money between accounts (Fabric)
+    txNumber: 10000
+    rateControl:
+          type: fixed-rate
+          opts:
+              tps: 500
+    arguments:
+        money: 100
+    callback: benchmarks/scenario/simple/transfer.js
+
+  
+monitor:
+  type:
+  - docker
+  docker:
+    name:
+    - all
+  interval: 1

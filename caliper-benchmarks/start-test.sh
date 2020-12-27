@@ -1,0 +1,1 @@
+npx caliper launch master --caliper-benchconfig benchmarks/scenario/simple/config.yaml --caliper-workspace . --caliper-networkconfig networks/fabric/fabric-v1.4.1/2org1peergoleveldb/fabric-go.yaml --caliper-bind-sut fabric:1.4.1
